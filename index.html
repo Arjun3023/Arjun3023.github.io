@@ -2,30 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Arjun Gupta | Product, Strategy & AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arjun Gupta | Portfolio</title>
 
   <style>
+    :root {
+      --bg: #020617;
+      --card: #020617;
+      --border: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
+      margin: 0;
+      background: linear-gradient(180deg, #020617, #020617);
+      color: var(--text);
     }
 
-    a {
-      color: #38bdf8;
+    /* ---------- NAV ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 14px;
+      list-style: none;
+      margin: 0;
+    }
+
+    nav a {
+      color: var(--muted);
       text-decoration: none;
+      font-weight: 500;
     }
 
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- HERO ---------- */
     header {
-      padding: 80px 20px;
+      padding: 90px 20px 60px;
       text-align: center;
     }
 
@@ -35,58 +71,121 @@
     }
 
     header p {
-      font-size: 1.2rem;
-      color: #94a3b8;
-      max-width: 700px;
-      margin: 0 auto;
+      max-width: 760px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.15rem;
     }
 
+    .cta {
+      margin-top: 24px;
+    }
+
+    .cta a {
+      margin: 0 10px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .cta a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ---------- SECTIONS ---------- */
     section {
-      max-width: 900px;
+      max-width: 960px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 70px 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section h2 {
       font-size: 2rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #1e293b;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border);
       padding-bottom: 10px;
     }
 
+    /* ---------- CARDS ---------- */
     .card {
-      background: #020617;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #1e293b;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 18px;
     }
 
     .card h3 {
-      margin-bottom: 8px;
+      margin: 0 0 6px;
     }
 
-    .card p {
-      color: #cbd5f5;
+    .muted {
+      color: var(--muted);
     }
 
-    ul {
+    /* ---------- EXPERIENCE (TIMELINE FEEL) ---------- */
+    .experience .card {
+      cursor: pointer;
+      transition: border 0.3s;
+    }
+
+    .experience .card:hover {
+      border-color: var(--accent);
+    }
+
+    .details {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .details ul {
       margin-left: 20px;
     }
 
-    li {
-      margin-bottom: 8px;
+    /* ---------- PROJECTS ---------- */
+    .project-toggle {
+      color: var(--accent);
+      cursor: pointer;
+      font-size: 0.9rem;
     }
 
+    /* ---------- SKILLS ---------- */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .skill:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       padding: 40px 20px;
-      color: #94a3b8;
-      border-top: 1px solid #1e293b;
-    }
-
-    .links a {
-      margin: 0 10px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
     }
 
     @media (max-width: 600px) {
@@ -99,95 +198,121 @@
 
 <body>
 
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </nav>
+
   <!-- HERO -->
   <header>
     <h1>Arjun Gupta</h1>
     <p>
-      Product & Tech Strategy | AI & Digital Transformation | Ex-Consultant  
+      Product & Tech Strategy professional working at the intersection of
+      <strong>AI, analytics, and digital transformation</strong>.
       <br />
-      Building scalable systems, driving impact, and turning ambiguity into execution.
+      I’ve built systems, scaled teams, and driven outcomes across startups,
+      enterprises, and consulting environments.
     </p>
-    <div class="links" style="margin-top: 20px;">
-      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+
+    <div class="cta">
       <a href="https://github.com/arjun3023" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
       <a href="mailto:your@email.com">Email</a>
     </div>
   </header>
 
   <!-- ABOUT -->
-  <section>
-    <h2>About Me</h2>
+  <section id="about">
+    <h2>About</h2>
     <div class="card">
       <p>
-        I’m a tech-strategy and product-focused professional with experience across
-        consulting, startups, and enterprise environments. I’ve worked on data
-        migration, AI-driven analytics, SaaS platforms, and large-scale digital
-        transformation initiatives.
+        I enjoy solving ambiguous problems that sit between business and technology.
+        My work spans AI-driven analytics, SaaS platforms, large-scale data migration,
+        and enterprise transformation initiatives.
       </p>
-      <p style="margin-top: 10px;">
-        I enjoy solving messy problems, working with cross-functional teams, and
-        translating business needs into scalable technical solutions.
+      <p class="muted">
+        I’m particularly interested in GenAI adoption, product strategy,
+        and how organizations scale execution without losing velocity.
       </p>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section>
-    <h2>Experience</h2>
+  <section id="experience" class="experience">
+    <h2>Experience (click to expand)</h2>
 
-    <div class="card">
+    <div class="card" onclick="toggle(this)">
       <h3>Manager / Technical Consultant</h3>
-      <p><strong>HCLTech – Samsung SDS</strong></p>
-      <ul>
-        <li>Led migration from third-party time-off tool to in-house system</li>
-        <li>Saved ~$700K annually and improved efficiency by 25%</li>
-        <li>Executed zero-downtime data migration</li>
-      </ul>
+      <p class="muted">HCLTech – Samsung SDS</p>
+      <div class="details">
+        <ul>
+          <li>Led migration from third-party time-off system to in-house platform</li>
+          <li>Saved ~$700K annually with zero downtime</li>
+          <li>Improved operational efficiency by ~25%</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card" onclick="toggle(this)">
       <h3>Full-Stack Developer & Proxy Product Owner</h3>
-      <p><strong>FieldAssist</strong></p>
-      <ul>
-        <li>Worked on SaaS products in FMCG domain</li>
-        <li>Scaled engineering team from 15 → 150</li>
-        <li>Handled sprint planning, backlog grooming, and releases</li>
-      </ul>
+      <p class="muted">FieldAssist</p>
+      <div class="details">
+        <ul>
+          <li>Worked on SaaS products in FMCG ecosystem</li>
+          <li>Scaled engineering org from 15 → 150</li>
+          <li>Owned sprint planning, backlog, and stakeholder alignment</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section>
+  <section id="projects">
     <h2>Projects</h2>
 
     <div class="card">
       <h3>AI-Driven Analytics Platform</h3>
-      <p>
-        Built analytics workflows using unstructured data to generate business
-        insights, sentiment analysis, and compliance checklists.
+      <p class="muted">
+        Unstructured data → insights → decisions
       </p>
+      <p class="project-toggle" onclick="this.nextElementSibling.classList.toggle('hidden')">
+        What did I actually do?
+      </p>
+      <div>
+        <ul>
+          <li>Built sentiment analysis pipelines</li>
+          <li>Designed compliance checklists using AI signals</li>
+          <li>Converted messy data into executive-ready insights</li>
+        </ul>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Power BI Sales Intelligence Dashboard</h3>
+      <h3>Sales Intelligence with Power BI</h3>
       <p>
-        Designed optimized transaction databases and dashboards to track sales
-        trends, pricing strategies, and order summaries.
+        Optimized transaction databases and dashboards for leadership decision-making.
       </p>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section>
+  <section id="skills">
     <h2>Skills</h2>
-    <div class="card">
-      <ul>
-        <li>Product Management & Tech Strategy</li>
-        <li>AI, GenAI, Analytics</li>
-        <li>Agile, Scrum, Stakeholder Management</li>
-        <li>SQL, Power BI, Azure DevOps</li>
-        <li>Digital Transformation & Consulting Frameworks</li>
-      </ul>
+    <div class="card skills">
+      <span class="skill">Product Strategy</span>
+      <span class="skill">AI & GenAI</span>
+      <span class="skill">Analytics</span>
+      <span class="skill">Agile / Scrum</span>
+      <span class="skill">Stakeholder Management</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Power BI</span>
+      <span class="skill">Azure DevOps</span>
+      <span class="skill">Digital Transformation</span>
     </div>
   </section>
 
@@ -195,6 +320,24 @@
   <footer>
     © 2026 Arjun Gupta · Built with GitHub Pages
   </footer>
+
+  <!-- JS -->
+  <script>
+    function toggle(card) {
+      const details = card.querySelector(".details");
+      details.style.display = details.style.display === "block" ? "none" : "block";
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    });
+
+    document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+  </script>
 
 </body>
 </html>
