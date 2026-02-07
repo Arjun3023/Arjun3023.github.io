@@ -1,9 +1,19 @@
-# Assets for portfolio
+# Where to add which photo
 
-Add your files here:
+## Your assets
 
-- **Root:** `arjun.jpg` (your photo), `resume.pdf`
-- **logos/:** `maq.png`, `hcl.png`, `samsung.png`, `fieldassist.png`, `predixion.png`
-- **photos/:** `spjimr.jpg`, `work1.jpg`, `work2.jpg`
+| File | Where it appears |
+|------|------------------|
+| **`assets/arjun.png`** | Hero (top right) profile photo |
+| **`assets/resume.pdf`** | “Download Resume” button |
 
-Rename your uploaded photo to `arjun.jpg`.
+---
+
+## Company logos (Companies section)
+
+In **`assets/logos/`**:
+
+- **`maq.png`** – MAQ Software (added)
+- **`hcl.png`** – HCL (added)
+- **`predixion.png`** – Predixion (added)
+- **`fieldassist.svg`** – FieldAssist (placeholder; replace with PNG if you have one)

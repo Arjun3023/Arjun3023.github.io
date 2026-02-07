@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <title>Arjun Gupta | TPM • Product • AI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arjun Gupta — Technical Program Manager & Product consultant. 5+ years delivering AI-first, analytics-driven solutions. SPJIMR MBA, ex-HCL, MAQ Software." />
+  <title>Arjun Gupta | TPM · Product · AI</title>
 
   <style>
+    /* ---- Theme ---- */
     :root {
       --bg: #f8fafc;
       --card: #ffffff;
@@ -13,18 +15,37 @@
       --muted: #475569;
       --border: #e2e8f0;
       --accent: #2563eb;
+      --skill-bg: #f1f5f9;
+      --nav-bg: rgba(248, 250, 252, 0.95);
     }
 
-    * {
-      box-sizing: border-box;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #334155;
+      --accent: #60a5fa;
+      --skill-bg: #334155;
+      --nav-bg: rgba(15, 23, 42, 0.95);
+    }
+
+    /* ---- Base ---- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
       margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     a {
@@ -32,88 +53,134 @@
       text-decoration: none;
       font-weight: 500;
     }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    nav {
+    /* ---- Nav ---- */
+    .nav {
       position: sticky;
       top: 0;
-      background: rgba(248,250,252,0.95);
+      z-index: 10;
+      padding: 0.75rem 0;
+      background: var(--nav-bg);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      z-index: 10;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
-    nav ul {
+    .nav-inner {
       display: flex;
-      justify-content: center;
-      gap: 28px;
-      list-style: none;
-      padding: 14px;
-      margin: 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    header {
-      max-width: 1100px;
-      margin: auto;
-      padding: 90px 20px 70px;
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .theme-toggle:hover { background: var(--skill-bg); }
+    .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .theme-toggle[aria-pressed="true"] { border-color: var(--accent); }
+
+    /* ---- Layout ---- */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* ---- Hero ---- */
+    .hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
+      gap: 2.5rem;
       align-items: center;
+      padding: 4.5rem 0 3.5rem;
     }
 
-    header img {
-      width: 100%;
-      border-radius: 22px;
-      border: 1px solid var(--border);
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    p {
+    .hero-text .subtitle {
       color: var(--muted);
+      margin: 0 0 1.5rem;
+    }
+
+    .hero-text .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .cta a {
       display: inline-block;
-      margin-right: 12px;
-      margin-top: 14px;
-      padding: 10px 16px;
+      padding: 0.6rem 1rem;
       border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .cta a:hover { text-decoration: none; background: var(--skill-bg); }
+    .cta a.primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+    .cta a.primary:hover { filter: brightness(1.1); }
+
+    .hero-photo {
+      width: 100%;
+      border-radius: 1.25rem;
       border: 1px solid var(--border);
     }
 
-    .cta a.primary {
-      background: var(--accent);
-      color: white;
-      border: none;
-    }
-
+    /* ---- Sections ---- */
     section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 70px 20px;
+      padding: 3.5rem 0;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 28px;
+    section h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 26px;
-      margin-bottom: 22px;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
+    .card:last-child { margin-bottom: 0; }
 
+    /* ---- Logos ---- */
     .logos {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 1.75rem;
       align-items: center;
     }
 
@@ -121,159 +188,175 @@
       height: 38px;
       filter: grayscale(100%);
       opacity: 0.85;
+      transition: filter 0.2s, opacity 0.2s;
     }
+    .logos img:hover { filter: none; opacity: 1; }
 
-    .logos img:hover {
-      filter: none;
-      opacity: 1;
+    /* ---- Lists ---- */
+    .card ul {
+      margin: 0;
+      padding-left: 1.25rem;
     }
+    .card li { margin-bottom: 0.5rem; }
 
-    ul {
-      margin-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
+    /* ---- Skills ---- */
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 0.75rem;
     }
 
     .skill {
-      border: 1px solid var(--border);
-      padding: 8px 14px;
+      padding: 0.5rem 0.875rem;
       border-radius: 999px;
-      background: #f1f5f9;
-      font-size: 0.9rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 16px;
       border: 1px solid var(--border);
+      background: var(--skill-bg);
+      font-size: 0.9rem;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
+    /* ---- Footer ---- */
     footer {
       text-align: center;
-      padding: 40px 20px;
+      padding: 2.5rem 1.25rem;
       color: var(--muted);
+      font-size: 0.9rem;
       border-top: 1px solid var(--border);
+      transition: border-color 0.25s ease, color 0.25s ease;
     }
 
+    /* ---- Responsive ---- */
     @media (max-width: 900px) {
-      header {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { order: -1; max-width: 320px; }
     }
   </style>
 </head>
-
 <body>
 
-<nav>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#skills">Skills</a></li>
-  </ul>
-</nav>
-
-<header>
-  <div>
-    <h1>Arjun Gupta</h1>
-    <p>
-      Technical Program Manager & Product-focused consultant with 5+ years of experience
-      delivering AI-first, analytics-driven, and enterprise-scale solutions.
-    </p>
-
-    <div class="cta">
-      <a href="assets/resume.pdf" class="primary" download>Download Resume</a>
-      <a href="mailto:arjungupta3023@gmail.com">Email</a>
-      <a href="https://www.linkedin.com/in/arjungupta30/" target="_blank">LinkedIn</a>
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <nav aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle dark mode">
+        <span class="theme-icon" aria-hidden="true">☀️</span>
+      </button>
     </div>
-  </div>
+  </header>
 
-  <img src="assets/arjun.jpg" alt="Arjun Gupta" />
-</header>
+  <main>
+    <section class="container hero" aria-labelledby="hero-heading">
+      <div class="hero-text">
+        <h1 id="hero-heading">Arjun Gupta</h1>
+        <p class="subtitle">
+          Technical Program Manager & Product-focused consultant with 5+ years of experience
+          delivering AI-first, analytics-driven, and enterprise-scale solutions.
+        </p>
+        <div class="cta">
+          <a href="assets/resume.pdf" class="primary" download>Download Resume</a>
+          <a href="mailto:arjungupta3023@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/arjungupta30/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <img src="assets/arjun.png" alt="Arjun Gupta" class="hero-photo" width="400" height="400" />
+    </section>
 
-<section id="about">
-  <h2>Companies I've Worked With</h2>
-  <div class="card logos">
-    <img src="assets/logos/maq.png" alt="MAQ Software" />
-    <img src="assets/logos/hcl.png" alt="HCL" />
-    <img src="assets/logos/samsung.png" alt="Samsung" />
-    <img src="assets/logos/fieldassist.png" alt="FieldAssist" />
-    <img src="assets/logos/predixion.png" alt="Predixion" />
-  </div>
-</section>
+    <section id="about" class="container" aria-labelledby="about-heading">
+      <h2 id="about-heading">Companies I've Worked With</h2>
+      <div class="card logos">
+        <img src="assets/logos/maq.png" alt="MAQ Software" />
+        <img src="assets/logos/hcl.png" alt="HCL" />
+        <img src="assets/logos/fieldassist.svg" alt="FieldAssist" />
+        <img src="assets/logos/predixion.png" alt="Predixion" />
+      </div>
+    </section>
 
-<section id="experience">
-  <h2>Experience Highlights</h2>
-  <div class="card">
-    <ul>
-      <li>💰 $700K+ annual savings via platform modernization</li>
-      <li>📊 Owned $30M Microsoft analytics delivery portfolio</li>
-      <li>⚙️ 40% efficiency gains via GenAI & SDLC automation</li>
-      <li>👥 Scaled teams from 15 → 150 across global delivery</li>
-      <li>🚀 Accelerated release cycles by 20–30%</li>
-    </ul>
-  </div>
-</section>
+    <section id="experience" class="container" aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Experience Highlights</h2>
+      <div class="card">
+        <ul>
+          <li>💰 $700K+ annual savings via platform modernization</li>
+          <li>📊 Owned $30M Microsoft analytics delivery portfolio</li>
+          <li>⚙️ 40% efficiency gains via GenAI & SDLC automation</li>
+          <li>👥 Scaled teams from 15 → 150 across global delivery</li>
+          <li>🚀 Accelerated release cycles by 20–30%</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="education">
-  <h2>Education</h2>
+    <section id="education" class="container" aria-labelledby="edu-heading">
+      <h2 id="edu-heading">Education</h2>
+      <div class="card">
+        <strong>SPJIMR, Mumbai</strong><br />
+        MBA (PGDM – Business Analytics & Information Management)
+      </div>
+      <div class="card">
+        <strong>INSEAD, France</strong><br />
+        Executive MBA – Business Education Seminar
+      </div>
+      <div class="card">
+        <strong>LNMIIT, Jaipur</strong><br />
+        B.Tech – Computer Science Engineering
+      </div>
+    </section>
 
-  <div class="card">
-    <strong>SPJIMR, Mumbai</strong><br />
-    MBA (PGDM – Business Analytics & Information Management)
-  </div>
+    <section id="skills" class="container" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="card skills">
+        <span class="skill">TPM</span>
+        <span class="skill">Product Strategy</span>
+        <span class="skill">AI & GenAI</span>
+        <span class="skill">Azure DevOps</span>
+        <span class="skill">Power BI</span>
+        <span class="skill">Stakeholder Management</span>
+        <span class="skill">Agile / Scrum</span>
+      </div>
+    </section>
+  </main>
 
-  <div class="card">
-    <strong>INSEAD, France</strong><br />
-    Executive MBA – Business Education Seminar
-  </div>
+  <footer role="contentinfo">
+    © 2026 Arjun Gupta · Built with GitHub Pages
+  </footer>
 
-  <div class="card">
-    <strong>LNMIIT, Jaipur</strong><br />
-    B.Tech – Computer Science Engineering
-  </div>
-</section>
+  <script>
+    (function () {
+      var THEME_KEY = 'portfolio-theme';
+      var html = document.documentElement;
+      var btn = document.querySelector('.theme-toggle');
+      var icon = document.querySelector('.theme-icon');
 
-<section>
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="assets/photos/spjimr.jpg" alt="SPJIMR" />
-    <img src="assets/photos/work1.jpg" alt="Work" />
-    <img src="assets/photos/work2.jpg" alt="Work" />
-  </div>
-</section>
+      function getPreferred() {
+        var stored = localStorage.getItem(THEME_KEY);
+        if (stored) return stored;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="card skills">
-    <span class="skill">TPM</span>
-    <span class="skill">Product Strategy</span>
-    <span class="skill">AI & GenAI</span>
-    <span class="skill">Azure DevOps</span>
-    <span class="skill">Power BI</span>
-    <span class="skill">Stakeholder Management</span>
-    <span class="skill">Agile / Scrum</span>
-  </div>
-</section>
+      function setTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        if (btn) {
+          btn.setAttribute('aria-pressed', theme === 'dark');
+          if (icon) icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+        localStorage.setItem(THEME_KEY, theme);
+      }
 
-<footer>
-  © 2026 Arjun Gupta · Built with GitHub Pages
-</footer>
+      var current = getPreferred();
+      setTheme(current);
+
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          setTheme(next);
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
