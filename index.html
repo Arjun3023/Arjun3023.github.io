@@ -149,10 +149,21 @@
     }
     .cta a.primary:hover { filter: brightness(1.1); }
 
+    .hero-photo-wrap {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-width: 340px;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--skill-bg);
+    }
     .hero-photo {
       width: 100%;
-      border-radius: 1.25rem;
-      border: 1px solid var(--border);
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     /* ---- Sections ---- */
@@ -174,7 +185,67 @@
       margin-bottom: 1.25rem;
       transition: background-color 0.25s ease, border-color 0.25s ease;
     }
+    [data-theme="light"] .card { box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    [data-theme="dark"] .card { box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
     .card:last-child { margin-bottom: 0; }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: -0.5rem 0 1.5rem;
+      max-width: 56ch;
+    }
+
+    /* ---- Experience cards ---- */
+    .exp-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .exp-card:last-child { margin-bottom: 0; }
+    .exp-card-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: var(--bg);
+      padding: 6px;
+    }
+    .exp-card-content h3 { font-size: 1.1rem; margin: 0 0 0.25rem; }
+    .exp-card-meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .exp-card-content ul { margin: 0; padding-left: 1.25rem; }
+    .exp-card-content li { margin-bottom: 0.35rem; }
+
+    /* ---- Education cards ---- */
+    .edu-card {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .edu-card:last-child { margin-bottom: 0; }
+    .edu-card-image-wrap {
+      width: 140px;
+      height: 100px;
+      border-radius: 10px;
+      background: var(--skill-bg);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .edu-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .edu-card-image.logo { object-fit: contain; background: var(--card); }
+    .edu-card-body strong { display: block; margin-bottom: 0.25rem; }
+    .edu-card-body span { color: var(--muted); font-size: 0.95rem; }
 
     /* ---- Logos ---- */
     .logos {
@@ -228,7 +299,12 @@
     /* ---- Responsive ---- */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-photo { order: -1; max-width: 320px; }
+      .hero-photo-wrap { order: -1; justify-self: center; max-width: 280px; }
+    }
+    @media (max-width: 640px) {
+      .exp-card { grid-template-columns: 1fr; }
+      .edu-card { grid-template-columns: 1fr; }
+      .edu-card-image-wrap { width: 100%; height: 120px; }
     }
   </style>
 </head>
@@ -264,11 +340,14 @@
           <a href="https://www.linkedin.com/in/arjungupta30/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
-      <img src="assets/arjun.png" alt="Arjun Gupta" class="hero-photo" width="400" height="400" />
+      <div class="hero-photo-wrap">
+        <img src="assets/arjun.png" alt="Arjun Gupta" class="hero-photo" width="340" height="425" loading="eager" />
+      </div>
     </section>
 
     <section id="about" class="container" aria-labelledby="about-heading">
       <h2 id="about-heading">Companies I've Worked With</h2>
+      <p class="section-lead">Trusted by global enterprises for delivery, analytics, and AI-driven solutions.</p>
       <div class="card logos">
         <img src="assets/logos/maq.png" alt="MAQ Software" />
         <img src="assets/logos/hcl.png" alt="HCL" />
@@ -278,36 +357,96 @@
     </section>
 
     <section id="experience" class="container" aria-labelledby="exp-heading">
-      <h2 id="exp-heading">Experience Highlights</h2>
-      <div class="card">
-        <ul>
-          <li>💰 $700K+ annual savings via platform modernization</li>
-          <li>📊 Owned $30M Microsoft analytics delivery portfolio</li>
-          <li>⚙️ 40% efficiency gains via GenAI & SDLC automation</li>
-          <li>👥 Scaled teams from 15 → 150 across global delivery</li>
-          <li>🚀 Accelerated release cycles by 20–30%</li>
-        </ul>
+      <h2 id="exp-heading">Experience</h2>
+      <p class="section-lead">Technical program management, product strategy, and delivery leadership across analytics, AI, and enterprise platforms.</p>
+
+      <div class="card exp-card">
+        <img src="assets/logos/maq.png" alt="" class="exp-card-logo" aria-hidden="true" />
+        <div class="exp-card-content">
+          <h3>Technical Program Manager</h3>
+          <p class="exp-card-meta">MAQ Software · 2025 – Present</p>
+          <ul>
+            <li>Managing Microsoft enterprise analytics and AI initiatives; driving roadmap execution and stakeholder alignment</li>
+            <li>Improved leadership reporting efficiency by ~30% via governed Power BI models</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card exp-card">
+        <img src="assets/logos/hcl.png" alt="" class="exp-card-logo" aria-hidden="true" />
+        <div class="exp-card-content">
+          <h3>Technical Consultant</h3>
+          <p class="exp-card-meta">HCLTech – Samsung SDS · 2022 – 2024</p>
+          <ul>
+            <li>Delivered $700K+ annual savings by migrating from third-party to in-house platform</li>
+            <li>Led 5 cross-functional pods (150+ members) across global delivery</li>
+            <li>Reduced sprint unpredictability by 30% and accelerated releases by 20%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card exp-card">
+        <img src="assets/logos/fieldassist.svg" alt="" class="exp-card-logo" aria-hidden="true" />
+        <div class="exp-card-content">
+          <h3>Full Stack Engineer / Proxy Product Owner</h3>
+          <p class="exp-card-meta">FieldAssist · 2019 – 2022</p>
+          <ul>
+            <li>Built SaaS no-code reporting platform with 60% reduction in manual errors</li>
+            <li>Optimized dashboards for 80% faster load time; scaled engineering org from 15 → 150</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card exp-card">
+        <img src="assets/logos/predixion.png" alt="" class="exp-card-logo" aria-hidden="true" />
+        <div class="exp-card-content">
+          <h3>MBA Intern – AI / FinTech</h3>
+          <p class="exp-card-meta">Predixion.AI · 2024</p>
+          <ul>
+            <li>Leveraged AI to improve debt collection and compliance for FinTech firms</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <section id="education" class="container" aria-labelledby="edu-heading">
       <h2 id="edu-heading">Education</h2>
-      <div class="card">
-        <strong>SPJIMR, Mumbai</strong><br />
-        MBA (PGDM – Business Analytics & Information Management)
+      <p class="section-lead">Business analytics, engineering, and global business education.</p>
+
+      <div class="card edu-card">
+        <div class="edu-card-image-wrap">
+          <img src="assets/education/spjimr.jpg" alt="" class="edu-card-image" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="edu-card-body">
+          <strong>SPJIMR, Mumbai</strong>
+          <span>MBA (PGDM – Business Analytics & Information Management)</span>
+        </div>
       </div>
-      <div class="card">
-        <strong>INSEAD, France</strong><br />
-        Executive MBA – Business Education Seminar
+
+      <div class="card edu-card">
+        <div class="edu-card-image-wrap">
+          <img src="assets/education/insead.jpg" alt="" class="edu-card-image" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="edu-card-body">
+          <strong>INSEAD, France</strong>
+          <span>Executive MBA – Business Education Seminar</span>
+        </div>
       </div>
-      <div class="card">
-        <strong>LNMIIT, Jaipur</strong><br />
-        B.Tech – Computer Science Engineering
+
+      <div class="card edu-card">
+        <div class="edu-card-image-wrap">
+          <img src="assets/education/lnmiit.png" alt="" class="edu-card-image logo" loading="lazy" onerror="this.style.display='none'" />
+        </div>
+        <div class="edu-card-body">
+          <strong>LNMIIT, Jaipur</strong>
+          <span>B.Tech – Computer Science Engineering</span>
+        </div>
       </div>
     </section>
 
     <section id="skills" class="container" aria-labelledby="skills-heading">
       <h2 id="skills-heading">Skills</h2>
+      <p class="section-lead">Technical program management, product strategy, and execution.</p>
       <div class="card skills">
         <span class="skill">TPM</span>
         <span class="skill">Product Strategy</span>

@@ -1,19 +1,25 @@
-# Where to add which photo
+# Assets
 
-## Your assets
+## Your files
 
 | File | Where it appears |
 |------|------------------|
-| **`assets/arjun.png`** | Hero (top right) profile photo |
+| **`assets/arjun.png`** | Hero profile photo (fixed 4:5 aspect ratio) |
 | **`assets/resume.pdf`** | “Download Resume” button |
 
----
+## Company logos (`assets/logos/`)
 
-## Company logos (Companies section)
+- **`maq.png`**, **`hcl.png`**, **`predixion.png`** – used in Experience cards and About
+- **`fieldassist.svg`** – replace with PNG if you have one
 
-In **`assets/logos/`**:
+## Education photos (`assets/education/`)
 
-- **`maq.png`** – MAQ Software (added)
-- **`hcl.png`** – HCL (added)
-- **`predixion.png`** – Predixion (added)
-- **`fieldassist.svg`** – FieldAssist (placeholder; replace with PNG if you have one)
+Add campus or branding images for a stronger Education section:
+
+| File | College |
+|------|--------|
+| **`spjimr.jpg`** | SPJIMR, Mumbai (campus – Wikimedia) |
+| **`insead.jpg`** | INSEAD (campus – Wikimedia) |
+| **`lnmiit.png`** | LNMIIT, Jaipur (logo – Wikimedia) |
+
+All three are included. Replace with your own photos if you prefer.
